@@ -22,11 +22,13 @@ dist/            Hasil build → yang di-upload ke hosting
 ## Development (lokal, XAMPP)
 
 1. Jalankan **MySQL** dari XAMPP Control Panel.
-2. Buat database `rewang` dan import `database/schema.sql` (phpMyAdmin atau CLI):
+2. Buat database `rewang`, lalu import `database/schema.sql` dan `database/seed.sql` (phpMyAdmin atau CLI):
    ```
    C:\xampp\mysql\bin\mysql.exe -u root -e "CREATE DATABASE IF NOT EXISTS rewang CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
    C:\xampp\mysql\bin\mysql.exe -u root rewang < database/schema.sql
+   C:\xampp\mysql\bin\mysql.exe -u root rewang < database/seed.sql
    ```
+   Penjelasan tabel: [docs/skema-database.md](docs/skema-database.md).
 3. `npm install` (sekali saja)
 4. `npm run dev` → buka http://localhost:5173
 
@@ -39,7 +41,7 @@ Request ke `/api/*` dari Vite otomatis diteruskan ke PHP.
 2. `npm run build` → hasil di `dist/` (frontend + folder `api/`).
 3. Upload **isi** `dist/` ke `public_html` (atau subfolder tujuan). Pastikan file `.htaccess` ikut ter-upload.
 4. Di hosting, salin `api/config.example.php` menjadi `api/config.php` dan isi kredensial database dari cPanel. `debug` biarkan `false`.
-5. Buat database di cPanel lalu import `database/schema.sql` lewat phpMyAdmin.
+5. Buat database di cPanel lalu import `database/schema.sql`, kemudian `database/seed.sql`, lewat phpMyAdmin.
 6. Cek `https://domain.com/api/health` → harus `"database": "connected"`.
 
 Butuh Apache/LiteSpeed dengan `mod_rewrite` (standar di hampir semua shared hosting).
