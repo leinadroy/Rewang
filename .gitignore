@@ -6,3 +6,9 @@ api/config.php
 *.log
 .DS_Store
 Thumbs.db
+
+# Dokumen & mockup lokal di root (repo public, jangan di-commit)
+/*.jpeg
+/*.jpg
+/*.pptx
+/*.xlsx
