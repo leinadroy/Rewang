@@ -1,0 +1,14 @@
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Biarkan folder api/ ditangani oleh api/.htaccess
+  RewriteRule ^api/ - [L]
+
+  # SPA fallback: semua URL yang bukan file/folder nyata diarahkan ke index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . index.html [L]
+</IfModule>
